@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Sortowanie</title>
+<meta http-equiv="Content-Type:content="text/html charset-utf-8">
+<script type="text/javascript">
+var array=[];
+for(var i=0; i<100000; i++)
+{
+array[i]=Math.floor(Math.random()*100+1);
+}
+var n=array.length;
+function babelkowe(array,n)
+{
+    var pom=0;
+    var date1=new Date();
+    var time1=date1.getTime();
+    for (var j=n-1; j>0; j--)
+      {
+        for (var i=0; i<j; i++)
+        {
+           if(array[i]>array[i+1])
+           {
+               pom=array[i];
+               array[i]=array[i+1];
+               array[i+1]=pom;
+           }
+
+        }
+      }
+    var date2=new Date();
+    var time2=date2.getTime();
+    var alltime=time2-time1;
+    var one=document.getElementById("one").innerHTML=alltime;
+}
+
+function wstawianie(array,n)
+{
+    var k=0;
+    var pom=0;
+    var date1=new Date();
+    var time1=date1.getTime();
+        for(var i=0; i<n; i++)
+        {
+           for(var  j=i+1;j<n;j++)
+           {
+            k=i;
+            if(array[k]>array[j])
+    {
+            pom=array[k];
+            array[k]=array[j];
+            array[j]=pom;
+           }
+    }
+    }
+    var date2=new Date();
+    var time2=date2.getTime();
+    var alltime=time2-time1;
+    var two=document.getElementById("two").innerHTML=alltime;
+}
+</script>
+</head>
+<body>
+<button onclick=babelkowe(array,n)>posortuj</button>
+<div id="one">Sortowanie bąbelkowe</div>
+<button onclick=wstawianie(array,n)>posortuj</button>
+<div id="two">Sortowanie przez wstawianie</div>
+<button onclick=quicksort(array,0,n);>posortuj</button>
+<div id="three">Szybkie sortowanie</div>
+<button onclick=mergesort(array,n)>posortuj</button>
+<div id="four">Sortowanie przez scalanie</div>
+</body>
+</html>
