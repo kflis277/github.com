@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>dane</title>
+        <meta charset="UTF-8">
+        <script src="dane.js" ></script>
+        <script type="text/javascript">
+        var newDiv = null;
+        var element;
+        var list;
+                function normalize(data)
+                {
+                    data.id = normalized_id(data.id);
+                    data.parent_id = normalized_id(data.parent_id);
+                }
+
+                function normalized_id(id)
+                {
+                    var pars_id= parseInt(id);
+
+                    if(isNaN(pars_id))
+                    {
+                        return null;
+                    }
+                    return pars_id;
+                }
+            function sort_date(data)
+                {
+                    data.sort(function(a,b)
+                    {
+                        if (a.end_time <b.end_time)
+                            {
+                                return -1
+                            }
+                        
+                        if (a.end_time > b.end_time)
+                        {
+                            return 1;
+                        }
+                       if(a.end_time===b.end_time)
+                       {
+                        return 0
+                       }
+                    }
+                        );
+                }
+            function list()
+            {
+                start=0;
+                for(var i=0;i<data.length;i++)
+                {
+                    element=document.createElement("ol");
+                    var list=document.createElement("li");
+                    list.textContent=data[i].name;
+                    var list_two=document.createElement("li");
+                    list_two.textContent=data[i].start_time;
+                    var list_three=document.createElement("li");
+                    list_three.textContent=data[i].end_time;
+                    var list_four=document.createElement("li");
+                    list_four.textContent=data[i].status;
+                    var list_five=document.createElement("li");
+                    list_five.textContent=data[i].parent_id;
+                    var list_six=document.createElement("li");
+                    list_six.textContent=data[i].id;
+                    var list_seven=document.createElement("li");
+                    list_seven.textContent=data[i].assignee;
+                    var br=document.createElement("br");
+                    element.style.fontSize="20px";
+                    element.style.textAligne="left";
+                    element.style.color="#black";
+                    element.style.position="absolute";
+                    element.style.top;
+                    document.body.appendChild(element)
+
+                    list.style.fontsize="20px";
+                    list.style.textAligne="left";
+                    list.style.color="#black";
+                    document.body.appendChild(list)
+                    document.body.appendChild(list_two)
+                    document.body.appendChild(list_three)
+                    document.body.appendChild(list_four)
+                    document.body.appendChild(list_five)
+                    document.body.appendChild(list_six)
+                    document.body.appendChild(list_seven)
+                    document.body.appendChild(br)
+                }
+                
+            }
+            function main()
+            {
+                normalize(data)
+                sort_date(data)
+                list()
+            }
+        </script>
+    </head>
+    <body onload="main()"  style="margin: 0%; background:rgba(202, 165, 241, 0.8)">
+        
+    </body>
+    </html>
