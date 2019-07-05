@@ -162,6 +162,9 @@
                         element.style.margin.top="3%"
                         element.style.fontSize="20px"
                         element.style.textAlign="center";
+                        element.style.borderStyle="solid";
+                        element.style.borderColor="black";
+                        element.style.borderWidth="1px";
                         document.body.appendChild(element)
                         j++
                         }
